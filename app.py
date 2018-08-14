@@ -16,8 +16,9 @@ class School(db.Model):
   dbn = db.Column(db.String, primary_key=True)
 
 @app.route("/")
-def hello():
-  return "Hello World!"
+def index():
+  schools = School.query.all()
+  return render_template("list.html", schools=schools)
 
 @app.route("/schools/")
 def schools():
